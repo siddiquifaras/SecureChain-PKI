@@ -76,6 +76,9 @@ python test.py
 1. **Run the project**:
     ```bash
     python main.py
+2. **Run test**:
+    ```bash
+    python test.py
 
 
 ## Code Structure

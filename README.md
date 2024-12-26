@@ -2,6 +2,7 @@
 
 This project is a Python implementation of a simple blockchain with wallet functionality. The blockchain supports secure transactions, mining, and basic wallet operations, while incorporating key security features from the CIA triad: **Confidentiality** (via RSA encryption) and **Integrity** (via cryptographic hashes).
 
+---
 
 ## **Features**
 
@@ -26,16 +27,17 @@ This project is a Python implementation of a simple blockchain with wallet funct
 - **Confidentiality**: RSA encryption secures transactions.
 - **Integrity**: Cryptographic hashes link and validate block data.
 
+
 ## **Testing**
 
-A dedicated testing script (`test.py`) demonstrates key functionalities and scenarios:
+A dedicated testing script (test.py) demonstrates key functionalities and scenarios:
 - Replay attack detection.
 
-### Run Tests
+### **Run Tests**
 To run the replay attack test:
-```bash
+bash
 python test.py
-
+---
 
 1. **Run `main.py`**:
    - Validate the core functionality of your blockchain.
@@ -45,6 +47,7 @@ python test.py
    - Test the replay attack scenario.
    - Verify that replayed transactions are detected and rejected.
 
+---
 
 ## **Prerequisites**
 
@@ -73,6 +76,9 @@ python test.py
 1. **Run the project**:
     ```bash
     python main.py
+2. **Run test**:
+    ```bash
+    python test.py
 
 
 ## Code Structure
@@ -83,4 +89,4 @@ python test.py
 - **`wallet.py`**: Defines wallet operations, including sending/receiving funds and managing RSA keys.
 - **`security.py`**: Implements RSA encryption and decryption for secure transactions.
 - **`main.py`**: Driver script to demonstrate blockchain functionality.
-- **`test.py`**: Replay Attack Scenario in test.py.
+- **`test.py`**: Replay Attack Scenario

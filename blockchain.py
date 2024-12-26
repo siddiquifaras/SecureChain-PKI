@@ -31,9 +31,10 @@ class Block:
 # Class representing the blockchain
 class Blockchain:
     def __init__(self, difficulty=4):
-        self.chain = [self.create_genesis_block()] # Start blockchain with the genesis block
-        self.pending_transactions = [] # List of transactions waiting to be mined
-        self.difficulty = difficulty # Mining difficulty level
+        self.chain = [self.create_genesis_block()]
+        self.pending_transactions = []
+        self.difficulty = difficulty
+        self.target_mining_time = 10  # Target mining time in seconds
 
     # Creates the first block in the blockchain (genesis block).
     def create_genesis_block(self):
@@ -64,3 +65,11 @@ class Blockchain:
             if current_block.previous_hash != previous_block.hash:
                 return False
         return True
+
+    def adjust_difficulty(self):
+        if len(self.chain) > 1:
+            mining_time = self.chain[-1].timestamp - self.chain[-2].timestamp
+            if mining_time < self.target_mining_time:
+                self.difficulty += 1
+            elif mining_time > self.target_mining_time:
+                self.difficulty -= 1

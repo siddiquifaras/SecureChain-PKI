@@ -46,5 +46,12 @@ class Wallet:
         transaction.signature = RSAKeyManager.sign_data(self.private_key, transaction.hash_transaction())
 
     # Secure a transaction using the wallet's public key
-    def secure_transaction(self, transaction):
-        transaction.secure_transaction(self.public_key)
+    def secure_transaction(self, rsa_public_key):
+        transaction_data = f"{RSAKeyManager.serialize_public_key(self.sender)}{RSAKeyManager.serialize_public_key(self.recipient)}{self.amount}".encode()
+        self.encrypted_data, self.encrypted_key = HybridEncryption.encrypt_transaction(transaction_data, rsa_public_key)
+
+    def reveal_transaction(self, rsa_private_key):
+        decrypted_data = HybridEncryption.decrypt_transaction(
+            self.encrypted_data, self.encrypted_key, rsa_private_key
+        )
+        return decrypted_data.decode()
